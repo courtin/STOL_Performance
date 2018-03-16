@@ -1,0 +1,164 @@
+STOL Wing 
+#Mach
+ 0.0    
+#IYsym   IZsym   Zsym
+ 0       0       0.0
+#Sref    Cref    Bref
+86.82    2.405   37.44
+#Xref    Yref    Zref
+0.0      0.0     0.0
+#
+#
+
+#====================================================================
+SURFACE 
+Inner Wing 
+#Nchordwise  Cspace   Nspanwise   Sspace
+12           1.0      4           1.0
+#
+COMPONENT
+1
+#
+YDUPLICATE
+0.0
+#
+ANGLE
+3.0
+
+JET
+#Jname  Jgain  SgnDup   hjet   Nchordwise  Cspace
+CJet    1.0    +1.0     0.29    12          1.0
+
+#-------------------------------------------------------------
+SECTION
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.      0.0    0.0     3.094   0.0   0          0
+
+NACA
+4512
+
+#Cname   Cgain  Xhinge  HingeVec     SgnDup
+CONTROL
+flapIn     1.0   0.75    0.0 0.0 0.0   1.0
+
+CLAF
+1.0
+
+#-------------------------------------------------------------
+SECTION
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.194   4.675  0.0     2.707   0.0   0          0
+
+NACA
+4512
+
+#Cname   Cgain  Xhinge  HingeVec     SgnDup
+CONTROL
+flapIn     1.0   0.75    0.0 0.0 0.0   1.0
+
+CLAF
+1.0
+
+#====================================================================
+SURFACE 
+Mid Wing 
+#Nchordwise  Cspace   Nspanwise   Sspace
+12           1.0      4           1.0
+#
+COMPONENT
+1
+#
+YDUPLICATE
+0.0
+#
+ANGLE
+3.0
+
+JET
+#Jname  Jgain  SgnDup   hjet   Nchordwise  Cspace
+CJet    1.0    +1.0     0.29    12          1.0
+
+#-------------------------------------------------------------
+SECTION
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.194   4.675  0.0     2.707   0.0   0          0
+
+NACA
+4512
+
+#Cname   Cgain  Xhinge  HingeVec     SgnDup
+CONTROL
+flapMid     1.0   0.75    0.0 0.0 0.0   1.0
+
+CLAF
+1.0
+
+#-------------------------------------------------------------
+SECTION
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.388   9.350  0.0     2.319   0.0   0          0
+
+NACA
+4512
+
+#Cname   Cgain  Xhinge  HingeVec     SgnDup
+CONTROL
+flapMid     1.0   0.75    0.0 0.0 0.0   1.0
+
+CLAF
+1.0
+
+#====================================================================
+SURFACE 
+Outer Wing 
+#Nchordwise  Cspace   Nspanwise   Sspace
+12           1.0      8           1.0
+#
+COMPONENT
+1
+#
+YDUPLICATE
+0.0
+#
+ANGLE
+3.0
+
+JET
+#Jname  Jgain  SgnDup   hjet   Nchordwise  Cspace
+CJet    1.0    +1.0     0.29    12          1.0
+
+#-------------------------------------------------------------
+SECTION
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.388   9.350  0.0     2.319   0.0   0          0
+
+NACA
+4512
+
+#Cname   Cgain  Xhinge  HingeVec     SgnDup
+CONTROL
+flapOut     1.0   0.75    0.0 0.0 0.0   1.0
+
+CONTROL
+aileron  -1.0   0.75    0.0 0.0 0.0  -1.0
+
+CLAF
+1.0
+
+#-------------------------------------------------------------
+SECTION
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.775   18.700 0.0     1.544   0.0   0          0
+
+NACA
+4512
+
+#Cname   Cgain  Xhinge  HingeVec     SgnDup
+CONTROL
+flapOut     1.0   0.75    0.0 0.0 0.0   1.0
+
+CONTROL
+aileron  -1.0   0.75    0.0 0.0 0.0  -1.0
+
+CLAF
+1.0
