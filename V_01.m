@@ -109,18 +109,18 @@ in2m        = 0.0254;
 %%%%%%%%%%%%%%%%%%%%%%%
 %VEHICLE GEOMETRY     %
 %%%%%%%%%%%%%%%%%%%%%%%
-geometry.Wing.Sref              =  77.61   *ftsq2msq;
-geometry.Wing.AR                = 15.26;
+geometry.Wing.Sref              =  86.82   *ftsq2msq;
+geometry.Wing.AR                = 16.15;
 geometry.Wing.t_c_avg           = .106;
 geometry.Wing.lambda            = .6;
 geometry.Wing.x_c_m             = .5;   
 geometry.Wing.eta_0             = 0;    %high wing
 
 geometry.Wing.f_flap_span         = .6;
-geometry.Wing.f_flap_chord        = .7;
+geometry.Wing.f_flap_chord        = .3;
 
-geometry.Wing.f_spoil_span         = .2;
-geometry.Wing.f_spoil_chord        = .5;
+geometry.Wing.f_spoil_span         = .5;
+geometry.Wing.f_spoil_chord        = .2;
 
 geometry.Htail.S                 = 11.25;   %square feet
 geometry.Htail.AR                = 2.22;
@@ -199,8 +199,8 @@ aero.CL_ground_land      = .3;    %Vehicle CL with wheels on ground, landing con
 aero.CL_max_takeoff      = 4.005;
 aero.CL_ground_takeoff   = .2;    %Vehicle CL with wheels on ground, takeoff configuration
 aero.CL_c_max_land       = 2.0;
-aero.beta_flap_land      = 90;
-aero.beta_spoil_land     = 0;
+aero.delta_flap_land      = 40;
+aero.delta_spoil_land     = 90;
 aero.h_jet               = 1*ft2m;
 %%%%%%%%%%%%%%%%%%%%%%%%
 %ENVIRONMENT DEFINITION%

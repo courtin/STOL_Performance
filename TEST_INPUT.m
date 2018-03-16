@@ -200,8 +200,8 @@ aero.CL_ground_land      = .3;    %Vehicle CL with wheels on ground, landing con
 aero.CL_max_takeoff      = 2.8;
 aero.CL_ground_takeoff   = .2;    %Vehicle CL with wheels on ground, takeoff configuration
 aero.CL_c_max_land       = 2.0;
-aero.beta_flap_land      = 40;
-aero.beta_spoil_land     = 80;
+aero.delta_flap_land      = 40;
+aero.delta_spoil_land     = 80;
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %ENVIRONMENT DEFINITION%

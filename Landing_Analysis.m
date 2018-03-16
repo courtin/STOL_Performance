@@ -97,7 +97,7 @@ airplane = initialize_geometry(airplane);
 airplane.aero.h_jet = .25;
 segment_inputs.h_i = 0;
 segment_inputs.spd_mrgn = 1.3;
-CL = 7;
+CL = 3.3;
 static_LA(CL,airplane, segment_inputs, 1);
 %%
 % N       = 1;
@@ -142,16 +142,35 @@ function [gam_ref, V_ref, S_lnd] = static_LA(CL, airplane, segment_inputs, verbo
     CLc = airplane.aero.CL_c_max_land;
     e   = airplane.aero.Wing.e;
     AR  = airplane.geometry.Wing.AR;
-    
-    %assume alpha_i is the flap deflection angle
-    a_i_inf = get_a_i_inf(airplane, 'landing');
-    
-    if CL < CLc
-        CJ = 0;
-    else
-        CJ = (CL-CLc)/sind(a_i_inf);
+
+    %Get a_i_inf and flap deflection angle
+    a_i_inf = CL/(pi*e*AR);
+    err = 1e6;
+    err_threshold = 1e-3;
+    count = 0;
+    max_iter = 100;
+    if verbose
+        fprintf(1, 'Interating on CJ & downwash angle...\n')
+        fprintf(1, 'iter\ta_i_inf\terr\tCL\tCJ\n')
     end
-    
+    while (abs(err) > err_threshold) && (count < max_iter)
+        if CL < CLc
+            CJ = 0;
+        else
+            CJ = (CL-CLc)/sind(a_i_inf);
+        end
+        airplane.current_state.CJ = CJ;
+        a_i_new = get_a_i_inf(airplane, 'landing');
+        err = a_i_new - a_i_inf;
+        
+        if verbose
+            fprintf(1, '%2.0f\t%2.1f\t%3.3f\t%3.2f\t%3.2f\t\n', count,...
+                a_i_inf, err, CL, CJ)
+        end
+        a_i_inf = a_i_new;
+        count = count + 1;
+        
+    end
     gamma = 0;
     err = 1e6;
     err_threshold = 1e-3;

@@ -131,8 +131,8 @@ function [CDp, Drag_Decomp] = getProfileDrag(airplane, alt, M, config)
     %Drag from flaps 
     switch config
         case 'landing'
-            beta_flap   = airplane.aero.beta_flap_land;
-            beta_spoil  = airplane.aero.beta_spoil_land;
+            beta_flap   = airplane.aero.delta_flap_land;
+            beta_spoil  = airplane.aero.delta_spoil_land;
         case 'clean'
             beta_flap   = 0;
             beta_spoil  = 0;

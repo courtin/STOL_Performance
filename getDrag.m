@@ -15,7 +15,7 @@
 function [CD_total, Drag_Decomp] = getDrag(airplane, alt, M, CL, config)
     if isfield(airplane.current_state, 'CJ')
         CJ = airplane.current_state.CJ;
-        [CD_total, Drag_Decomp] = blownDrag(airplane, alt, M, CL, CJ, config);
+       [CD_total, Drag_Decomp] = blownDrag(airplane, alt, M, CL, CJ, config);
     else
         [CD_total, Drag_Decomp] = basicDrag(airplane, alt, M, CL, config);
     end
