@@ -117,10 +117,10 @@ geometry.Wing.x_c_m             = .5;
 geometry.Wing.eta_0             = 0;    %high wing
 
 geometry.Wing.f_flap_span         = .6;
-geometry.Wing.f_flap_chord        = .7;
+geometry.Wing.f_flap_chord        = .3;
 
-geometry.Wing.f_spoil_span         = .2;
-geometry.Wing.f_spoil_chord        = .5;
+geometry.Wing.f_spoil_span         = .5;
+geometry.Wing.f_spoil_chord        = .2;
 
 geometry.Htail.S                 = 11.25;   %square feet
 geometry.Htail.AR                = 2.22;

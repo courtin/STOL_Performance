@@ -97,7 +97,7 @@ airplane = initialize_geometry(airplane);
 airplane.aero.h_jet = .25;
 segment_inputs.h_i = 0;
 segment_inputs.spd_mrgn = 1.3;
-CL = 7;
+CL = 4;
 static_LA(CL,airplane, segment_inputs, 1);
 %%
 % N       = 1;
