@@ -116,6 +116,7 @@ function [S_m, V_grnd] = get_LandingDistance(airplane, segment_inputs, verbose)
     M_lnd   = V_lnd/a;
     %CL_lnd  = 2*W/(rho*V_lnd^2*Sref);
     CL_lnd  = CL_max/spd_mrgn^2;
+    airplane.current_state.CJ = 0;
     [CD_lnd,~] = getDrag(airplane, alt_lnd, M_lnd, CL_lnd, 'landing');
     
     %Calculate wheels-down drag coefficient
@@ -176,6 +177,6 @@ function [S_m, V_grnd] = get_LandingDistance(airplane, segment_inputs, verbose)
         fprintf(1, "Touchdown CL            %4.2f\n", CL_lnd)
         fprintf(1, "Touchdown CD            %4.2f\n", CD_lnd)
         fprintf(1, "Touchdown L/D           %4.2f\n", CL_lnd/CD_lnd)
-        fprintf(1, "Power-off approach path %2.1f deg\n", gamma_lnd) 
+        %fprintf(1, "Power-off approach path %2.1f deg\n", gamma_lnd) 
     end
 end

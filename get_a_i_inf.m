@@ -5,7 +5,7 @@ function a_i_inf = get_a_i_inf(airplane, config)
 switch config
     case 'landing'
         %a_i_inf = airplane.aero.beta_flap_land * lambda;
-        tau = airplane.aero.beta_flap_land*pi/180;
+        tau = airplane.aero.delta_flap_land*pi/180;
         AR  = airplane.geometry.Wing.AR;
         t_c = airplane.geometry.Wing.t_c_avg;
         CJ  = airplane.current_state.CJ;

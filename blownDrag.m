@@ -25,7 +25,8 @@
 %                             .Sref              Main wing reference area
 %                             .Swet              Main wing wetted area
 %               .aerodynamics
-%                           .Wing
+% 
+%.Wing
 %                                .e              Main wing span efficiency
 %             
 %
