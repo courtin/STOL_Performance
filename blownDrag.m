@@ -25,10 +25,13 @@
 %                             .Sref              Main wing reference area
 %                             .Swet              Main wing wetted area
 %               .aerodynamics
-% 
-%.Wing
+%                          .Wing
 %                                .e              Main wing span efficiency
+%
 %             
+%   config      Sets vehicle flap/spoiler configuration
+%               - 'landing': flaps and spoilers deployed 
+%               - 'clean':   flaps and spoilers retracted
 %
 %   alt         Operating altitude (m) 
 %   M           Operating Mach number (-) 
