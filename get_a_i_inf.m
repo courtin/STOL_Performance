@@ -36,10 +36,12 @@ switch config
             CJ  = airplane.current_state.CJ;
             dCLdt = 2*sqrt(pi*CJ)*sqrt(1+.151*sqrt(CJ )+.139);
             dCLda = 2*pi*(1+.151*sqrt(CJ) + .219*CJ);
-            alfa = 10*pi/180;   %Assumes some constant alfa_flight near unblown stall
+            alfa = 12*pi/180;   %Assumes some constant alfa_flight near unblown stall
             CL2 = (1+t_c)*(tau*dCLdt+(alfa)*dCLda)-(t_c*(tau+alfa)*CJ);
             a_i_inf = (2/pi)*CL2/(AR+(2/pi)*dCLda-2);
             lambda = a_i_inf/(alfa + tau);
+            a_i_inf_clean = 2*airplane.current_state.CL/(pi*airplane.geometry.Wing.AR...
+                *airplane.aero.Wing.e);
             a_i_inf = a_i_inf*180/pi;
         end
 end

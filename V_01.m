@@ -201,7 +201,8 @@ aero.CL_ground_takeoff   = .2;    %Vehicle CL with wheels on ground, takeoff con
 aero.CL_c_max_land       = 2.0;
 aero.delta_flap_land      = 40;
 aero.delta_spoil_land     = 90;
-aero.h_jet               = 1*ft2m;
+aero.h_jet               = 6*ft2m;
+airplane.aero.alfa_approach = 10;
 %%%%%%%%%%%%%%%%%%%%%%%%
 %ENVIRONMENT DEFINITION%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -222,6 +223,7 @@ sim.cinc                = 64;
 sim.rinc                = 64;
 sim.dinc                = 64;
 sim.downwash_mode            = 3;
+sim.jvl_input_file      = 'h_wing';
 
 sim.sizeTimeHistory =17;
 
