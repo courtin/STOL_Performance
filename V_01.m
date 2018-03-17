@@ -221,6 +221,7 @@ sim.flight_condition    = 'std day';
 sim.cinc                = 64;
 sim.rinc                = 64;
 sim.dinc                = 64;
+sim.downwash_mode            = 3;
 
 sim.sizeTimeHistory =17;
 

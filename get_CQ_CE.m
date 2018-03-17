@@ -1,18 +1,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   get_CQ_CE
+%   CQ, CE Helper function
 %
 %   Calculated CQ and CE from CJ  and h/c
+%
+%   Based on the formulation from Drela "Powered Lift and Drag Calcs" and
+%   Drela "Thin Airfoil Theory for 2D Blown Airfoils"
 %
 %   Assumes low speed flow (no density effects) 
 %
 %   OUTPUTS:
 %
-%       CQ        
-%       CE            
+%       CQ  Jet mass flow coefficient      
+%       CE  Jet energy flow coefficient
+%
 %   INPUTS:
 %   
-%       CJ
-%       h_c
+%       CJ Jet momentum flow coefficient
+%       h_c Jet thickness/chord ratio
 %
     
 function [CQ, CE] = get_CQ_CE(CJ, h_c)
