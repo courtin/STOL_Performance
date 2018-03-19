@@ -92,42 +92,33 @@
 %%
 clc;
 clear all; 
-V_01
+V_02;
 airplane = initialize_geometry(airplane);
 airplane.aero.h_jet = .25;
 segment_inputs.h_i = 0;
 segment_inputs.spd_mrgn = 1.0;
-airplane.aero.delta_flap_land = 80;
-airplane.sim.downwash_mode = 2;
-CL = 7;
-static_LA(CL,airplane, segment_inputs, 1);
-%%
-% N       = 1;
-% CL      = linspace(1.5,5,N);
-% gam_ref = zeros(N,1);
-% V_ref   = zeros(N,1);
-% S_roll  = zeros(N,1);
-% 
-% for i = 1:N
-%     [gam_ref(i), V_ref(i), S_roll(i)] = static_LA(CL(i), airplane, segment_inputs, 1);
-% end
-% 
-% plot(CL, gam_ref)
-% hold on
-% plot([CL(1), CL(N)], [0,0], 'k--')
-% xlabel('C_L')
-% ylabel('\gamma_{approach}')
-% 
-% figure()
-% plot(CL, S_roll)
-% xlabel('C_L')
-% ylabel('Landing ground roll (m)')
-% 
-% figure()
-% plot(CL, V_ref)
-% xlabel('C_L')
-% ylabel('Approach speed (m/s)')
-% 
+
+airplane.sim.downwash_mode = 3;
+aero.CL_c_max_land       = 3.5;
+
+d_flaps = [10:10:60];
+D = length(d_flaps);
+
+CL = [3:1:7];
+C = length(CL);
+figure()
+hold on
+V_02;
+    airplane = initialize_geometry(airplane);
+for d = 1:D
+    P_shaft = zeros(1,C);
+    
+    airplane.aero.delta_flap_land = d_flaps(d);
+    for c = 1:C
+        [gam_ref, V_ref, S_lnd, P_shaft(c)] = static_LA(CL(c),airplane, segment_inputs, 1);
+    end
+    plot(CL, P_shaft./1000)
+end
 
 
 

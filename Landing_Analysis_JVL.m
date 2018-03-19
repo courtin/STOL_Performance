@@ -92,11 +92,12 @@
 %%
 clc;
 clear all; 
-V_01;
+V_02;
 airplane = initialize_geometry(airplane);
 segment_inputs.h_i = 0;
+airplane.aero.delta_flap_land = 80;
 segment_inputs.spd_mrgn = 1.0;
-CL = 6;
+CL = 6.5;
 static_LA_JVL(CL,airplane, segment_inputs, 1);
 %%
 % N       = 1;

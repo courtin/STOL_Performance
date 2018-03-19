@@ -39,7 +39,7 @@
 %
 %    Changes:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [gam_ref, V_ref, S_lnd] = static_LA(CL, airplane, segment_inputs, verbose)
+function [gam_ref, V_ref, S_lnd, P_shaft] = static_LA(CL, airplane, segment_inputs, verbose)
     
     W                   = airplane.current_state.weight;
     Sref                = airplane.geometry.Wing.Sref;
