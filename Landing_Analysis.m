@@ -99,26 +99,39 @@ segment_inputs.h_i = 0;
 segment_inputs.spd_mrgn = 1.0;
 
 airplane.sim.downwash_mode = 3;
-aero.CL_c_max_land       = 3.5;
+aero.CL_c_max_land       = 3;
 
 d_flaps = [10:10:60];
 D = length(d_flaps);
 
-CL = [3:1:7];
+CL = [3:1:12];
 C = length(CL);
 figure()
 hold on
 V_02;
-    airplane = initialize_geometry(airplane);
+airplane = initialize_geometry(airplane);
+Pgam0 = zeros(1,D);
+CLgam0 = zeros(1,D);
+Pgamn5 = zeros(1,D);
+CLgamn5 = zeros(1,D);
 for d = 1:D
     P_shaft = zeros(1,C);
+    gammas  = zeros(1,C);
     
     airplane.aero.delta_flap_land = d_flaps(d);
     for c = 1:C
-        [gam_ref, V_ref, S_lnd, P_shaft(c)] = static_LA(CL(c),airplane, segment_inputs, 1);
+        [gammas(c), V_ref, S_lnd, P_shaft(c)] = static_LA(CL(c),airplane, segment_inputs, 1);
     end
+    
+    Pgam0(d) = interp1(gammas, P_shaft, 0);
+    CLgam0(d) = interp1(gammas, CL, 0);
+    Pgamn5(d) = interp1(gammas, P_shaft, -5);
+    CLgamn5(d) = interp1(gammas, CL, -5);
+    
     plot(CL, P_shaft./1000)
 end
+plot(CLgam0, Pgam0./1000, '-k')
+plot(CLgamn5, Pgamn5./1000, '-k')
 
 
 

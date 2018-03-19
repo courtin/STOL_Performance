@@ -200,7 +200,7 @@ aero.CL_max_takeoff      = 4.167;
 aero.CL_ground_takeoff   = .2;    %Vehicle CL with wheels on ground, takeoff configuration
 aero.CL_c_max_land       = 3.5;
 aero.delta_flap_land      = 60;
-aero.delta_spoil_land     = 75;
+aero.delta_spoil_land     = 0;
 aero.h_jet               = 6*ft2m;
 airplane.aero.alfa_approach = 10;
 %%%%%%%%%%%%%%%%%%%%%%%%
