@@ -202,7 +202,7 @@ aero.CL_c_max_land       = 3.5;
 aero.delta_flap_land      = 60;
 aero.delta_spoil_land     = 0;
 aero.h_jet               = 6*ft2m;
-airplane.aero.alfa_approach = 10;
+aero.alfa_approach = 12;
 %%%%%%%%%%%%%%%%%%%%%%%%
 %ENVIRONMENT DEFINITION%
 %%%%%%%%%%%%%%%%%%%%%%%%

@@ -52,36 +52,52 @@ function [gam_ref, V_ref, S_lnd, P_shaft] = static_LA(CL, airplane, segment_inpu
     CLc = airplane.aero.CL_c_max_land;
     e   = airplane.aero.Wing.e;
     AR  = airplane.geometry.Wing.AR;
-
+    %Check unblown lift
+    airplane.current_state.CJ = 0;
+    [a_i_inf, CL_unblown] = get_a_i_inf(airplane, 'landing');
+    if CL_unblown > CL
+        CJ = 0;
+        a_i_inf = CL/(pi*e*AR);
+    else
+        fun = @(CJ) getCLresidual(CJ, CL,airplane,'landing');
+        CJ = fzero(fun, 1.5);
+    end
+    airplane.current_state.CJ = CJ;
+    [a_i_inf, CL_unblown] = get_a_i_inf(airplane, 'landing');
+    fprintf(1, 'a_i_inf\tCL\tCJ\n')
+    fprintf(1, '%3.2f\t%3.2f\t%3.2f\n', a_i_inf*180/pi, CL, CJ)
     %Get a_i_inf and flap deflection angle
-    a_i_inf = CL/(pi*e*AR);
-    err = 1e6;
-    err_threshold = 1e-3;
-    count = 0;
-    max_iter = 100;
-    if verbose
-        fprintf(1, 'Interating on CJ & downwash angle...\n')
-        fprintf(1, 'iter\ta_i_inf\terr\tCL\tCJ\n')
-    end
-    while (abs(err) > err_threshold) && (count < max_iter)
-        if CL < CLc
-            CJ = 0;
-        else
-            CJ = (CL-CLc)/sind(a_i_inf);
-        end
-        airplane.current_state.CJ = CJ;
-        airplane.current_state.CL = CL;
-        a_i_new = get_a_i_inf(airplane, 'landing');
-        err = a_i_new - a_i_inf;
-        
-        if verbose
-            fprintf(1, '%2.0f\t%2.1f\t%3.3f\t%3.2f\t%3.2f\t\n', count,...
-                a_i_inf, err, CL, CJ)
-        end
-        a_i_inf = a_i_new;
-        count = count + 1;
-        
-    end
+%     a_i_inf = CL/(pi*e*AR);
+%     err = 1e6;
+%     err_threshold = 1e-3;
+%     count = 0;
+%     max_iter = 100;
+%     alfa = 10;  %Approach AoA
+%     if verbose
+%         fprintf(1, 'Interating on CL, CJ & downwash angle...\n')
+%         fprintf(1, 'iter\ta_i_inf\terr\tCL\tCJ\tCLc\n')
+%     end
+%     while (abs(err) > err_threshold) && (count < max_iter)
+%         CLc = a_i_inf*pi*AR/2;
+%         if CL < CLc
+%             CJ = 0;
+%         else
+%             CJ = (CL-CLc)/sin(a_i_inf);
+%         end
+%         airplane.current_state.CJ = CJ;
+%         airplane.current_state.CL = CL;
+%         [a_i_new, CL] = get_a_i_inf(airplane, 'landing');
+%         err = a_i_new - a_i_inf;
+%         
+%         a_i_inf_deg = a_i_inf*180/pi;
+%         if verbose
+%             fprintf(1, '%2.0f\t%2.1f\t%3.3f\t%3.2f\t%3.2f\t%3.2f\n', count,...
+%                 a_i_inf, err, CL, CJ, CLc)
+%         end
+%         a_i_inf = a_i_new;
+%         count = count + 1;
+%         
+%     end
     
     %Get approach angle
     gamma = 0;
@@ -115,6 +131,11 @@ function [gam_ref, V_ref, S_lnd, P_shaft] = static_LA(CL, airplane, segment_inpu
         end
         gamma = gamma_n;
         count = count+1;
+        
+        if gamma_n > 89 %Hack to deal with the case where we've basically become a helicopter
+            gamma = 90
+            err = 0
+        end
         
         
         

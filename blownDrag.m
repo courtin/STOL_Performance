@@ -49,10 +49,11 @@ function [CX, Drag_Decomp] = blownDrag(airplane, alt, M, CL, CJ, config)
     %Profile drag
     [CDp, DD] = getProfileDrag(airplane, alt, M, config);
     airplane.current_state.CL = CL;
+    airplane.current_state.CJ = CJ;
     a_i_inf = get_a_i_inf(airplane, config);
     Drag_Decomp.CDp = CDp;
     
     [CQ, CE] = get_CQ_CE(CJ, h/c);
-    CX = CL.^2/(pi*e*AR) - CJ*cosd(a_i_inf) + 2.*CQ + CDp;
+    CX = (CL-CJ*sin(a_i_inf))^2/(pi*e*AR) - CJ*cos(a_i_inf) + 2.*CQ + CDp;
     
 end

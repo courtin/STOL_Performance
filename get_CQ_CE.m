@@ -20,7 +20,7 @@
 %
     
 function [CQ, CE] = get_CQ_CE(CJ, h_c)
-   Vj_Vinf = sqrt(CJ./h_c);
+   Vj_Vinf = sqrt(CJ./(2*h_c));
    CE = h_c.*Vj_Vinf.^3;
    CQ = h_c.*Vj_Vinf;
 end
