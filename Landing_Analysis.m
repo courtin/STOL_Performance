@@ -157,7 +157,8 @@ for d = 1:D
     %Pgamn5(d) = interp1(gammas, P_shaft, -5);
     %CLgamn5(d) = interp1(gammas, CL, -5);
     
-    plot(CL, gammas)
+    %plot(CL, gammas)
+    plot(CL, P_shaft./1000)
 end
 
 xlabel('CL')
