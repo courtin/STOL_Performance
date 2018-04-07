@@ -53,7 +53,7 @@ function [gam_ref, V_ref, S_lnd, P_shaft] = static_LA(CL, airplane, segment_inpu
     e   = airplane.aero.Wing.e;
     AR  = airplane.geometry.Wing.AR;
     %Check unblown lift
-    airplane.current_state.CJ = 0;
+    airplane.current_state.CJ = 0.0001;
     [a_i_inf, CL_unblown] = get_a_i_inf(airplane, 'landing');
     if CL_unblown > CL
         CJ = 0;

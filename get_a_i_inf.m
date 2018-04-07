@@ -35,7 +35,7 @@ switch config
             t_c = airplane.geometry.Wing.t_c_avg;
             CJ  = airplane.current_state.CJ;
             if CJ < 0
-                CJ = 0
+                CJ = 0;
             end
             dCLdt = 2*sqrt(pi*CJ)*sqrt(1+.151*sqrt(CJ )+.139*CJ);
             dCLda = 2*pi*(1+.151*sqrt(CJ) + .219*CJ);
